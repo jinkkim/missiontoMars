@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="header text-center my-3">Mission to Mars</h1>
+            <p class="text-center"><a class="btn btn-primary btn-lg button-text " href="/scrape" role="button">Scrape New Data</a></p>
+        </div>
+        
+        <div class="row my-3">
+          
+            <div class="container col-lg-6">
+              <h1 class="h2">Latest Mars News</h1>
+              <h2 class="h4">{{ information["news_title"]}}</h2>
+              <p>{{ information["news_p"] }}</p>
+
+            </div>
+
+            <div class="container column col-lg-5">
+              <h1 class="h2">Current Weather on Mars</h1>
+              <p>{{ information["mars_weather"] }}</p>
+
+            </div>
+        </div>
+
+        <div class="row my-3">
+          
+            <div class="container col-lg-6">
+              <h1 class="h2">Featured Mars Image</h1>
+              <img height="auto" width=500px src={{information["featured_image_url"]}} alt="Featured Mars Image">
+
+            </div>
+
+            <div class="container column col-lg-5">
+              <h1 class="h2">Mars Facts</h1>
+              <div>{{ information.table_html | safe }}</div>
+
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="container">
+                    <h1 class="h2">Mars Hemispheres</h1>
+                    <div class="row justify-content-left">
+        
+                        {% for item in information["hemispheres_image_urls"] %}
+                        <div class="card mx-2" style="width: 15rem;">
+                            <img class="card-img-top " height="auto" width="200" src={{item.img_url}} alt="Card image cap">
+                            <div class="card-body">
+                              <h5 class="h6 card-title">{{item.title}}</h5>
+                            </div>
+                          </div>
+                        {% endfor %}
+        
+                    </div> 
+            </div>
+               
+        </div>
+        
+    </div>         
+
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+
